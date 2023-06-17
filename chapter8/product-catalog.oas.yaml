@@ -134,44 +134,6 @@ paths:
         '500':
           $ref: '#/components/responses/500Response'
       deprecated: false
-  /v1/catalog/products/{id}/reviews:
-    get:
-      tags:
-        - Reviews
-      summary: List reviews
-      description: List all reviews for a product.
-      operationId: listProductReviews
-      parameters:
-        - $ref: '#/components/parameters/productId'
-      responses:
-        '200':
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: '#/components/headers/rateLimit'
-            RateLimit-Remaining:
-              $ref: '#/components/headers/rateLimitRemaining'
-            RateLimit-Reset:
-              $ref: '#/components/headers/rateLimitReset'
-          content:
-            application/vnd.api+json:
-              schema:
-                $ref: '#/components/schemas/ReviewsResponse'
-        '400':
-          $ref: '#/components/responses/400Response'
-        '401':
-          $ref: '#/components/responses/401Response'
-        '403':
-          $ref: '#/components/responses/403Response'
-        '406':
-          $ref: '#/components/responses/406Response'
-        '415':
-          $ref: '#/components/responses/415Response'
-        '429':
-          $ref: '#/components/responses/429Response'
-        '500':
-          $ref: '#/components/responses/500Response'
-      deprecated: false
 components:
   headers:
     rateLimit:
