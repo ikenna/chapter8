@@ -5,7 +5,7 @@
     <artifactId>products-api</artifactId>
     <packaging>jar</packaging>
     <name>products-api</name>
-    <version>1.0</version>
+    <version>1.${env.GITHUB_RUN_NUMBER}</version>
 
     <properties>
         <java.version>17</java.version>
