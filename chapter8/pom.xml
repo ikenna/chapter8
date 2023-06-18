@@ -40,6 +40,12 @@
                                     <sources>
                                         <source>src/it/java</source>
                                     </sources>
+                                    <source>17</source>
+                                    <target>17</target>
+                                    <testSource>17</testSource>
+                                    <testTarget>17</testTarget>
+                                    <showDeprecation>true</showDeprecation>
+                                    <compilerArgument>-Xlint:unchecked</compilerArgument>
                                 </configuration>
                             </execution>
                         </executions>
