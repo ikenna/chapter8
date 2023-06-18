@@ -9,7 +9,7 @@ permissions:
   checks: write
 
 jobs:
-  build-source-code:
+  pr-code-build:
     name: Build and test source code
     runs-on: ubuntu-latest
     permissions:
@@ -34,9 +34,3 @@ jobs:
         run: |
           cd chapter8
           ./run_unittest.sh
-      - name: Publish package
-        run: | 
-          cd chapter8
-          mvn --batch-mode deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
