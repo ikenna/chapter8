@@ -40,8 +40,8 @@ jobs:
     steps:
       - name: list files
         run: |
-        ls 
-        tree
+          ls 
+          tree
       - name: Run API linting
         uses: stoplightio/spectral-action@latest
         with:
