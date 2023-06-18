@@ -23,17 +23,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - name: Test environments
-        run: |
-          mvn -version
-          echo $JAVA_HOME
       - name: Compile
         run: |
           cd chapter8
           mvn --batch-mode clean compile
       - name: Unit test
         run: |
-          ls
           cd chapter8
           ./run_unittest.sh
+      - name: Publish packaage
+        run: mvn -B publish
       
