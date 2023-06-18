@@ -34,3 +34,12 @@ jobs:
         run: |
           cd chapter8
           ./run_unittest.sh
+  pr-api-minium-review-criteria:
+    name: Minimum API design reivew criteria
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run API linting
+        uses: stoplightio/spectral-action@latest
+        with:
+          file_glob: "./chapter8/product-catalog.oas.yaml"
+          spectral_ruleset: "./chapter8/rulesets/json-api.ruleset.yaml"
