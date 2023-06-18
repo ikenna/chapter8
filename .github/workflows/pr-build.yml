@@ -32,5 +32,7 @@ jobs:
           cd chapter8
           ./run_unittest.sh
       - name: Publish packaage
-        run: mvn -B publish
+        run: | 
+          cd chapter8
+          mvn -B publish
       
