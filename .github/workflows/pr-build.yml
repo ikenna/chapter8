@@ -34,5 +34,5 @@ jobs:
       - name: Publish packaage
         run: | 
           cd chapter8
-          mvn -B publish
+          mvn -B deploy
       
