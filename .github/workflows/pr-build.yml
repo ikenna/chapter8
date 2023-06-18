@@ -25,7 +25,7 @@ jobs:
           cache: maven
       - name: Compile
         run: |
-          ls -lash
+          cd chapter8
           mvn clean compile
       - name: Unit test
         run: run_unittest.sh
