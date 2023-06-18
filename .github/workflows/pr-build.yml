@@ -32,5 +32,8 @@ jobs:
           cd chapter8
           mvn --batch-mode clean compile
       - name: Unit test
-        run: ./run_unittest.sh
+        run: |
+          ls
+          cd chapter8
+          ./run_unittest.sh
       
