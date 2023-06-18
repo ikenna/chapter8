@@ -1,16 +1,19 @@
-name: PR build workflow
+name: Mainline merge
 
-on: 
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
+on:
+  push:
+    branches:
+      - main
+
+env:
+  run_number: ${GITHUB_RUN_NUMBER}
 
 permissions:
   checks: write
 
 jobs:
-  pr-code-build:
-    name: Build and test source code
+  build-and-publish:
+    name: Build and publish to artifact repo
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -34,3 +37,10 @@ jobs:
         run: |
           cd chapter8
           ./run_unittest.sh
+      - name: Publish package
+        run: | 
+          cd chapter8
+          mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
