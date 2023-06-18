@@ -1,2 +1,2 @@
 
-mvn test
+mvn --batch-mode test

@@ -1,2 +1,2 @@
 
- mvn verify -Pacceptance-tests
+ mvn --batch-mode verify -Pacceptance-tests
