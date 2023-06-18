@@ -23,6 +23,10 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
+      - name: Test environments
+        run: |
+          mvn -version
+          echo $JAVA_HOME
       - name: Compile
         run: |
           cd chapter8
