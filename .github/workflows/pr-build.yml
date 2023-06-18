@@ -26,7 +26,7 @@ jobs:
       - name: Compile
         run: |
           cd chapter8
-          mvn clean compile
+          mvn --batch-mode clean compile
       - name: Unit test
         run: run_unittest.sh
       
