@@ -38,10 +38,10 @@ jobs:
     name: Minimum API design reivew criteria
     runs-on: ubuntu-latest
     steps:
-      - name: list files
-        run: |
-          ls 
-          tree
+      - name: Checkout out pr branch
+        uses: actions/checkout@v3
+      - name: View working folder
+        run:  tree
       - name: Run API linting
         uses: stoplightio/spectral-action@latest
         with:
