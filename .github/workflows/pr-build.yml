@@ -12,6 +12,9 @@ jobs:
   build-source-code:
     name: Build and test source code
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout out pr branch
         uses: actions/checkout@v3
