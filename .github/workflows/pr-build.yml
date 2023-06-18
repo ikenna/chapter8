@@ -31,8 +31,9 @@ jobs:
         run: |
           cd chapter8
           ./run_unittest.sh
-      - name: Publish packaage
+      - name: Publish package
         run: | 
           cd chapter8
-          mvn -B deploy
-      
+          mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
