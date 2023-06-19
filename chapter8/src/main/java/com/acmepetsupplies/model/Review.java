@@ -2,10 +2,11 @@ package com.acmepetsupplies.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.acmepetsupplies.model.ProductAttributes;
-import com.acmepetsupplies.model.ProductRelationships;
+import com.acmepetsupplies.model.ReviewAttributes;
+import com.acmepetsupplies.model.ReviewRelationships;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -17,61 +18,42 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * An item in Acme&#39;s pet supplies catalog.
+ * A review for a product.
  */
 
-@Schema(name = "Product", description = "An item in Acme's pet supplies catalog.")
+@Schema(name = "Review", description = "A review for a product.")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-06-18T20:17:33.879399+01:00[Europe/London]")
-public class Product {
+public class Review {
 
-  private String id;
+  private UUID id;
 
   private String type;
 
-  private ProductAttributes attributes;
+  private ReviewAttributes attributes;
 
-  private ProductRelationships relationships;
+  private ReviewRelationships relationships;
 
-  /**
-   * Default constructor
-   * @deprecated Use {@link Product#Product(String, String, ProductAttributes, ProductRelationships)}
-   */
-  @Deprecated
-  public Product() {
-    super();
-  }
-
-  /**
-   * Constructor with only required parameters
-   */
-  public Product(String id, String type, ProductAttributes attributes, ProductRelationships relationships) {
-    this.id = id;
-    this.type = type;
-    this.attributes = attributes;
-    this.relationships = relationships;
-  }
-
-  public Product id(String id) {
+  public Review id(UUID id) {
     this.id = id;
     return this;
   }
 
   /**
-   * Identifier for the product.
+   * Identifier for a product review.
    * @return id
   */
-  @NotNull 
-  @Schema(name = "id", example = "dcd53ddb-8104-4e48-8cc0-5df1088c6113", description = "Identifier for the product.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Valid 
+  @Schema(name = "id", description = "Identifier for a product review.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public UUID getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(UUID id) {
     this.id = id;
   }
 
-  public Product type(String type) {
+  public Review type(String type) {
     this.type = type;
     return this;
   }
@@ -80,8 +62,8 @@ public class Product {
    * Get type
    * @return type
   */
-  @NotNull @Size(max = 7) 
-  @Schema(name = "type", example = "product", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Size(max = 6) 
+  @Schema(name = "type", example = "review", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
   public String getType() {
     return type;
@@ -91,7 +73,7 @@ public class Product {
     this.type = type;
   }
 
-  public Product attributes(ProductAttributes attributes) {
+  public Review attributes(ReviewAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -100,18 +82,18 @@ public class Product {
    * Get attributes
    * @return attributes
   */
-  @NotNull @Valid 
-  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Valid 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attributes")
-  public ProductAttributes getAttributes() {
+  public ReviewAttributes getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ProductAttributes attributes) {
+  public void setAttributes(ReviewAttributes attributes) {
     this.attributes = attributes;
   }
 
-  public Product relationships(ProductRelationships relationships) {
+  public Review relationships(ReviewRelationships relationships) {
     this.relationships = relationships;
     return this;
   }
@@ -120,14 +102,14 @@ public class Product {
    * Get relationships
    * @return relationships
   */
-  @NotNull @Valid 
-  @Schema(name = "relationships", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Valid 
+  @Schema(name = "relationships", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("relationships")
-  public ProductRelationships getRelationships() {
+  public ReviewRelationships getRelationships() {
     return relationships;
   }
 
-  public void setRelationships(ProductRelationships relationships) {
+  public void setRelationships(ReviewRelationships relationships) {
     this.relationships = relationships;
   }
 
@@ -139,11 +121,11 @@ public class Product {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Product product = (Product) o;
-    return Objects.equals(this.id, product.id) &&
-        Objects.equals(this.type, product.type) &&
-        Objects.equals(this.attributes, product.attributes) &&
-        Objects.equals(this.relationships, product.relationships);
+    Review review = (Review) o;
+    return Objects.equals(this.id, review.id) &&
+        Objects.equals(this.type, review.type) &&
+        Objects.equals(this.attributes, review.attributes) &&
+        Objects.equals(this.relationships, review.relationships);
   }
 
   @Override
@@ -154,7 +136,7 @@ public class Product {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Product {\n");
+    sb.append("class Review {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");

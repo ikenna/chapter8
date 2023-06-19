@@ -2,9 +2,11 @@ package com.acmepetsupplies.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.acmepetsupplies.model.ErrorErrorsInner;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -16,121 +18,58 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * An error response.
+ * A JSON:API-compliant error response. This object is inherited by the specific response type.
  */
 
-@Schema(name = "Error", description = "An error response.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-12-31T13:20:55.039973Z[Europe/London]")
+@Schema(name = "Error", description = "A JSON:API-compliant error response. This object is inherited by the specific response type.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-06-18T20:17:33.879399+01:00[Europe/London]")
 public class Error {
 
-  @JsonProperty("id")
-  private UUID id;
+  @Valid
+  private List<@Valid ErrorErrorsInner> errors = new ArrayList<>();
 
-  @JsonProperty("status")
-  private Integer status;
+  /**
+   * Default constructor
+   * @deprecated Use {@link Error#Error(List<@Valid ErrorErrorsInner>)}
+   */
+  @Deprecated
+  public Error() {
+    super();
+  }
 
-  @JsonProperty("code")
-  private String code;
+  /**
+   * Constructor with only required parameters
+   */
+  public Error(List<@Valid ErrorErrorsInner> errors) {
+    this.errors = errors;
+  }
 
-  @JsonProperty("title")
-  private String title;
+  public Error errors(List<@Valid ErrorErrorsInner> errors) {
+    this.errors = errors;
+    return this;
+  }
 
-  @JsonProperty("detail")
-  private String detail;
-
-  public Error id(UUID id) {
-    this.id = id;
+  public Error addErrorsItem(ErrorErrorsInner errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
     return this;
   }
 
   /**
-   * a unique identifier for this particular occurrence of the problem
-   * @return id
+   * An array of Error objects
+   * @return errors
   */
-  @Valid 
-  @Schema(name = "id", description = "a unique identifier for this particular occurrence of the problem", required = false)
-  public UUID getId() {
-    return id;
+  @NotNull @Valid @Size(min = 1) 
+  @Schema(name = "errors", description = "An array of Error objects", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("errors")
+  public List<@Valid ErrorErrorsInner> getErrors() {
+    return errors;
   }
 
-  public void setId(UUID id) {
-    this.id = id;
-  }
-
-  public Error status(Integer status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * the HTTP status code applicable to this problem
-   * @return status
-  */
-  @NotNull 
-  @Schema(name = "status", description = "the HTTP status code applicable to this problem", required = true)
-  public Integer getStatus() {
-    return status;
-  }
-
-  public void setStatus(Integer status) {
-    this.status = status;
-  }
-
-  public Error code(String code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * an application-specific error code
-   * @return code
-  */
-  @Size(max = 100) 
-  @Schema(name = "code", description = "an application-specific error code", required = false)
-  public String getCode() {
-    return code;
-  }
-
-  public void setCode(String code) {
-    this.code = code;
-  }
-
-  public Error title(String title) {
-    this.title = title;
-    return this;
-  }
-
-  /**
-   * a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization
-   * @return title
-  */
-  @NotNull @Size(max = 100) 
-  @Schema(name = "title", description = "a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization", required = true)
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public Error detail(String detail) {
-    this.detail = detail;
-    return this;
-  }
-
-  /**
-   * a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized
-   * @return detail
-  */
-  @Size(max = 150) 
-  @Schema(name = "detail", description = "a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized", required = false)
-  public String getDetail() {
-    return detail;
-  }
-
-  public void setDetail(String detail) {
-    this.detail = detail;
+  public void setErrors(List<@Valid ErrorErrorsInner> errors) {
+    this.errors = errors;
   }
 
   @Override
@@ -142,27 +81,19 @@ public class Error {
       return false;
     }
     Error error = (Error) o;
-    return Objects.equals(this.id, error.id) &&
-        Objects.equals(this.status, error.status) &&
-        Objects.equals(this.code, error.code) &&
-        Objects.equals(this.title, error.title) &&
-        Objects.equals(this.detail, error.detail);
+    return Objects.equals(this.errors, error.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, code, title, detail);
+    return Objects.hash(errors);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Error {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

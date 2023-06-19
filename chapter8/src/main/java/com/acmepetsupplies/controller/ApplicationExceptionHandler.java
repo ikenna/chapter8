@@ -1,6 +1,7 @@
 package com.acmepetsupplies.controller;
 
 import com.acmepetsupplies.model.Error;
+import com.acmepetsupplies.model.ErrorErrorsInner;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,22 +18,18 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(
             Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        Error apiError = new Error();
-        apiError.setId(UUID.randomUUID());
-        apiError.setStatus(status.value());
-        switch (status.series().value()) {
-            case 4 -> apiError.setCode("validation." + status.series().name().toLowerCase());
-            case 5 -> apiError.setCode("error." + status.series().name().toLowerCase());
-            default -> apiError.setCode(status.series().name().toLowerCase());
-        }
-        apiError.setTitle(status.getReasonPhrase());
+        ErrorErrorsInner errorsInner = new ErrorErrorsInner(status.series().value(), status.getReasonPhrase());
+        errorsInner.setStatus(status.value());
+        errorsInner.setTitle(status.getReasonPhrase());
         switch (status.value()) {
-            case 400 -> apiError.setDetail("Bad request. Please check the request is valid.");
+            case 400 -> errorsInner.setDetail("Bad request. Please check the request is valid.");
             case 404 ->
-                    apiError.setDetail("Resource not found. Please check the path and resource identifier in your request");
-            case 429 -> apiError.setDetail("Too many requests. Request quota exceeded in time window. Try again soon");
-            default -> apiError.setDetail(status.getReasonPhrase());
+                    errorsInner.setDetail("Resource not found. Please check the path and resource identifier in your request");
+            case 429 -> errorsInner.setDetail("Too many requests. Request quota exceeded in time window. Try again soon");
+            default -> errorsInner.setDetail(status.getReasonPhrase());
         }
+        Error apiError = new Error();
+        apiError.addErrorsItem(errorsInner);
         return new ResponseEntity<>(apiError, headers, status);
     }
 

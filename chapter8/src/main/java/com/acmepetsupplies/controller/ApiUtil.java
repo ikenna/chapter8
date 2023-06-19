@@ -1,5 +1,6 @@
 package com.acmepetsupplies.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.context.request.NativeWebRequest;
 
 import javax.servlet.http.HttpServletResponse;

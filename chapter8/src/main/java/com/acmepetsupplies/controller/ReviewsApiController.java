@@ -1,9 +1,8 @@
 package com.acmepetsupplies.controller;
 
 import com.acmepetsupplies.model.Error;
-import com.acmepetsupplies.model.ProductsResponse;
+import com.acmepetsupplies.model.ReviewsResponse;
 import java.util.UUID;
-import com.acmepetsupplies.model.ViewProduct200Response;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +31,12 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-06-18T20:17:33.879399+01:00[Europe/London]")
 @Controller
 @RequestMapping("${openapi.productCatalog.base-path:}")
-public class ProductsApiController implements ProductsApi {
+public class ReviewsApiController implements ReviewsApi {
 
     private final NativeWebRequest request;
 
     @Autowired
-    public ProductsApiController(NativeWebRequest request) {
+    public ReviewsApiController(NativeWebRequest request) {
         this.request = request;
     }
 
