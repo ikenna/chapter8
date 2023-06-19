@@ -40,10 +40,29 @@ jobs:
     steps:
       - name: Checkout out pr branch
         uses: actions/checkout@v3
+        with:
+          path: revision
       - name: View working folder
         run:  tree
       - name: Run API linting
         uses: stoplightio/spectral-action@latest
         with:
-          file_glob: "./chapter8/product-catalog.oas.yaml"
-          spectral_ruleset: "./chapter8/rulesets/json-api.ruleset.yaml"
+          file_glob: "./revision/chapter8/product-catalog.oas.yaml"
+          spectral_ruleset: "./revision/chapter8/rulesets/json-api.ruleset.yaml"
+      - name: Check out main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          path: base
+      - name: View working folder
+        run: |
+          ls -lash
+          tree
+      - name: Running OpenAPI Spec diff action (Tufin/oasdiff)
+        id: test_breaking_changes
+        uses: oasdiff/oasdiff-action/check-breaking@main
+        with:
+          base: './base/chapter8/product-catalog.oas.yaml'
+          revision: './revision/chapter8/product-catalog.oas.yaml'
+          format: 'yaml'
+          fail-on-diff: true
