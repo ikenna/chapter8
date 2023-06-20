@@ -57,6 +57,7 @@ jobs:
       - name: View working folder
         run: |
           ls -lash
+          ls -lash revision
           tree
       - name: Breaking change checks
         id: test_breaking_changes
