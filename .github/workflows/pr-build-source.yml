@@ -45,10 +45,8 @@ jobs:
       - name: View working folder
         run:  tree
       - name: Run API linting
-        uses: stoplightio/spectral-action@latest
-        with:
-          file_glob: "./revision/chapter8/product-catalog.oas.yaml"
-          spectral_ruleset: "./revision/chapter8/rulesets/json-api.ruleset.yaml"
+        run: | 
+          npx spectral lint "./revision/chapter8/product-catalog.oas.yaml" --ruleset "./revision/chapter8/rulesets/json-api.ruleset.yaml"
       - name: Check out main branch
         uses: actions/checkout@v3
         with:
@@ -70,5 +68,5 @@ jobs:
         uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          vale_flags: "--config='revision/.vale.ini'"
+          vale_flags: "--config=revision/.vale.ini"
           files: '["revision/chapter8/docs"]'
