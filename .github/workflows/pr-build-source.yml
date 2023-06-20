@@ -46,7 +46,7 @@ jobs:
         run:  tree
       - name: Run API linting
         run: | 
-          npx spectral lint "./revision/chapter8/product-catalog.oas.yaml" --ruleset "./revision/chapter8/rulesets/json-api.ruleset.yaml"
+          npx @stoplight/spectral-cli lint "./revision/chapter8/product-catalog.oas.yaml" --ruleset "./revision/chapter8/rulesets/json-api.ruleset.yaml"
       - name: Check out main branch
         uses: actions/checkout@v3
         with:
