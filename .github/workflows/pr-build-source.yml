@@ -68,7 +68,7 @@ jobs:
           fail-on-diff: true
       - name: Prose linting
         uses: errata-ai/vale-action@reviewdog
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: '["chapter8/docs"]'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          vale_flags: "--config='revision/.vale.ini'"
+          files: '["revision/chapter8/docs"]'
