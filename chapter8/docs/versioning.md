@@ -1,1 +1,1 @@
-This API uses path versioning. 
+This API uses path versioning.

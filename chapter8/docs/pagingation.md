@@ -1,1 +1,1 @@
-The Acme Products API use cursor-based pagination.  
+The Acme Products API use cursor-based pagination.
