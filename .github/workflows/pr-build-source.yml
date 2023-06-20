@@ -58,11 +58,16 @@ jobs:
         run: |
           ls -lash
           tree
-      - name: Running OpenAPI Spec diff action (Tufin/oasdiff)
+      - name: Breaking change checks
         id: test_breaking_changes
         uses: oasdiff/oasdiff-action/check-breaking@main
         with:
           base: './base/chapter8/product-catalog.oas.yaml'
           revision: './revision/chapter8/product-catalog.oas.yaml'
-          format: 'yaml'
           fail-on-diff: true
+      - name: Prose linting
+        uses: errata-ai/vale-action@reviewdog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: '["chapter8/docs"]'
