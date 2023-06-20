@@ -56,7 +56,6 @@ jobs:
         run: |
           ls -lash
           ls -lash revision
-          tree
       - name: Breaking change checks
         id: test_breaking_changes
         uses: oasdiff/oasdiff-action/check-breaking@main
@@ -70,9 +69,3 @@ jobs:
           mkdir bin && tar -xvzf vale_2.15.4_Linux_64-bit.tar.gz -C bin
           export PATH=./bin:"$PATH"
           vale --config=revision/.vale.ini revision/chapter8/docs
-      # - name: Prose linting
-      #   uses: errata-ai/vale-action@reviewdog
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     vale_flags: "--config=revision/.vale.ini"
-      #     files: '["revision/chapter8/docs"]'
