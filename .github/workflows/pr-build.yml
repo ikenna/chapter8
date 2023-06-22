@@ -44,6 +44,8 @@ jobs:
           path: revision
       - name: View working folder
         run:  tree
+      - name: Check PR title
+        run: ./revision/chapter8/pr-title.sh "'${{ github.event.pull_request.title }}'"
       - name: Run API linting
         run: | 
           npx @stoplight/spectral-cli lint "./revision/chapter8/apis/product-catalog.oas.yaml" --ruleset "./revision/chapter8/apis/rulesets/json-api.ruleset.yaml"
@@ -69,3 +71,4 @@ jobs:
           mkdir bin && tar -xvzf vale_2.15.4_Linux_64-bit.tar.gz -C bin
           export PATH=./bin:"$PATH"
           vale --config=revision/.vale.ini revision/chapter8/apis/docs
+  

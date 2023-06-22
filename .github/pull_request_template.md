@@ -1,8 +1,7 @@
-## Provide a description of your changes and the reason for it.
 
-## Issue ticket link
+## Why is this change needed?
+
+## What is the scope of this change?
 
 ## Checklist  
 - [ ] Have you run tests locally?
-
-
