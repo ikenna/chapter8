@@ -68,4 +68,3 @@ jobs:
           mkdir bin && tar -xvzf vale_2.15.4_Linux_64-bit.tar.gz -C bin
           export PATH=./bin:"$PATH"
           vale --config=revision/.vale.ini revision/chapter8/apis/docs
-  
