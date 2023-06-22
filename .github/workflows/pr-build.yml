@@ -45,7 +45,7 @@ jobs:
       - name: View working folder
         run:  tree
       - name: Check PR title
-        run: ./revision/chapter8/pr-title.sh ${{ github.event.pull_request.title }}
+        run: ./revision/chapter8/pr-title.sh "${{ github.event.pull_request.title }}"
       - name: Run API linting
         run: | 
           npx @stoplight/spectral-cli lint "./revision/chapter8/apis/product-catalog.oas.yaml" --ruleset "./revision/chapter8/apis/rulesets/json-api.ruleset.yaml"
