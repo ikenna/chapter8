@@ -8,9 +8,6 @@ on:
 env:
   run_number: ${GITHUB_RUN_NUMBER}
 
-permissions:
-  checks: write
-
 jobs:
   build-and-publish:
     name: Build and publish to artifact repo
