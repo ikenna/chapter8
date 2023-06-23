@@ -31,7 +31,7 @@ jobs:
           cd chapter8
           ./run_unittest.sh
   pr-api-minium-review-criteria:
-    name: Minimum API design reivew criteria
+    name: Minimum API design review criteria
     runs-on: ubuntu-latest
     steps:
       - name: Checkout out pr branch
@@ -49,7 +49,6 @@ jobs:
           ref: main
           path: base
       - name: Breaking change checks
-        id: test_breaking_changes
         uses: oasdiff/oasdiff-action/check-breaking@main
         with:
           base: './base/chapter8/apis/product-catalog.oas.yaml'
