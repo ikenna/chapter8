@@ -1,5 +1,5 @@
 # The apigovernance team are codeowners to files in the `/apis` directory in the root of the repository, 
 # and any files or directories in it
 
-chapter8/apis/ @api-ikenna
+chapter8/apis/* @api-ikenna
 
