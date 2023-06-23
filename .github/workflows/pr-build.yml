@@ -10,7 +10,6 @@ jobs:
     name: Build and test source code
     runs-on: ubuntu-latest
     permissions:
-      contents: read
       packages: write
     steps:
       - name: Checkout out pr branch
