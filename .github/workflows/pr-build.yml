@@ -37,33 +37,27 @@ jobs:
       - name: Checkout out pr branch
         uses: actions/checkout@v3
         with:
-          path: revision
-      - name: View working folder
-        run:  tree
+          path: pr-branch
       - name: Check PR title
-        run: ./revision/chapter8/pr-title.sh "'${{ github.event.pull_request.title }}'"
+        run: ./pr-branch/chapter8/pr-title.sh "'${{ github.event.pull_request.title }}'"
       - name: Run API linting
         run: | 
-          npx @stoplight/spectral-cli lint "./revision/chapter8/apis/product-catalog.oas.yaml" --ruleset "./revision/chapter8/apis/rulesets/json-api.ruleset.yaml"
+          npx @stoplight/spectral-cli lint "./pr-branch/chapter8/apis/product-catalog.oas.yaml" --ruleset "./pr-branch/chapter8/apis/rulesets/json-api.ruleset.yaml"
       - name: Check out main branch
         uses: actions/checkout@v3
         with:
           ref: main
           path: base
-      - name: View working folder
-        run: |
-          ls -lash
-          ls -lash revision
       - name: Breaking change checks
         id: test_breaking_changes
         uses: oasdiff/oasdiff-action/check-breaking@main
         with:
           base: './base/chapter8/apis/product-catalog.oas.yaml'
-          revision: './revision/chapter8/apis/product-catalog.oas.yaml'
+          revision: './pr-branch/chapter8/apis/product-catalog.oas.yaml'
           fail-on-diff: true
       - name: Prose Linting
         run: | 
           wget -nv  https://github.com/errata-ai/vale/releases/download/v2.15.4/vale_2.15.4_Linux_64-bit.tar.gz
           mkdir bin && tar -xvzf vale_2.15.4_Linux_64-bit.tar.gz -C bin
           export PATH=./bin:"$PATH"
-          vale --config=revision/.vale.ini revision/chapter8/apis/docs
+          vale --config=pr-branch/.vale.ini pr-branch/chapter8/apis/docs
