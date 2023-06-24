@@ -59,10 +59,7 @@ jobs:
           wget -nv  https://github.com/errata-ai/vale/releases/download/v2.15.4/vale_2.15.4_Linux_64-bit.tar.gz
           mkdir bin && tar -xvzf vale_2.15.4_Linux_64-bit.tar.gz -C bin
           export PATH=./bin:"$PATH"
-          pwd
-          ls
-          echo $PATH
-          which vale
+          
           vale sync --config='pr-branch/chapter8/.vale.ini'
           vale pr-branch/chapter8/apis/docs --config='pr-branch/chapter8/.vale.ini'
        
