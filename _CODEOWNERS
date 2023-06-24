@@ -1,0 +1,4 @@
+# Lines starting with '#' are comments.
+# Each line is a file pattern followed by one or more owners.
+# Codeowner to approve API definition and guide documentation changes
+chapter8/apis/  @your-colleagues-github-id
