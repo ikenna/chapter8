@@ -60,8 +60,10 @@ jobs:
           mkdir bin && tar -xvzf vale_2.15.4_Linux_64-bit.tar.gz -C bin
           export PATH=./bin:"$PATH"
           pwd
+          ls
           echo $PATH
           which vale
           cd pr-branch/chapter8
-          ./run_vale.sh
+          vale sync
+          vale apis/docs
        
