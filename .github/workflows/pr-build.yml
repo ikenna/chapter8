@@ -63,7 +63,6 @@ jobs:
           ls
           echo $PATH
           which vale
-          cd pr-branch/chapter8
-          vale sync
-          vale apis/docs
+          vale sync --config='pr-branch/chapter8/.vale.ini'
+          vale pr-branch/chapter8/apis/docs --config='pr-branch/chapter8/.vale.ini'
        
