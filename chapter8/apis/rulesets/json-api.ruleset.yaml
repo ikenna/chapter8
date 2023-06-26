@@ -1,4 +1,5 @@
-# JSON:API ruleset based on https://github.com/jmlue42/spectral-jsonapi-ruleset 
+# JSON:API ruleset based on https://github.com/jmlue42/spectral-jsonapi-ruleset
+extends: ["spectral:oas"]
 
 rules:
 
